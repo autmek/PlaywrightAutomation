@@ -1,6 +1,6 @@
 const { defineConfig } = require('@playwright/test');
 const commonSettings = {
-  headless: process.env.CI ? true : true,
+  headless: process.env.CI ? true : false,
   trace: 'on',
   screenshot: 'only-on-failure',
   video: 'retain-on-failure',
@@ -22,12 +22,12 @@ module.exports = defineConfig({
   ],
 
   projects: [
-    { name: 'Headless_Run', // Name of the project
+    { name: 'firefox', // Name of the project
       use: {
         ...commonSettings,
         browserName: 'firefox',
       },},
-    { name: 'Headed_Run', // Name of the project
+    { name: 'chromium', // Name of the project
       use: {
         ...commonSettings,
         browserName: 'chromium',
