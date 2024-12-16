@@ -1,0 +1,30 @@
+name: Playwright Tests
+
+on:
+  #schedule:
+   # - cron: '30 12 * * *'  # Runs at 6:00 PM IST every day
+  workflow_dispatch:  # This allows you to manually trigger the workflow if needed
+
+jobs:
+  test:
+    runs-on: macos-latest  
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install dependencies
+      run: npm install
+
+    #- name: Install Chromium browser only
+     # run: npx playwright install chromium
+    - name: Install Firefox browser only
+      run: npx playwright install firefox
+    - name: Run Playwright tests on Firefox
+      run: npx playwright test --project=firefox 
+   # - name: Run Playwright tests on Chromium
+    #  run: npx playwright test --project=chromium
