@@ -197,15 +197,6 @@ async function manualRecommendation(triggerOption,triggerValue){
     await iframe.locator('.sf-cs-modal-footer').getByRole('button',{name:'Confirm'}).click();
     await iframe.getByRole('button',{name: 'Continue'}).click();
 }
-
-async function recomProductsOnWidget(){
-    const newWidg = await WidgetIsDisplayed(newPage,widgetID);
-    const productTitles = await newWidg.locator('.sf-product-title').allTextContents();
-    for(const recom of recentViewed_products){
-        expect(productTitles).toContain(recom);
-    }
-}
-
 // 4. Add Variable product from widget to cart
 test('Add variable product from widget to cart', async () => {
     if(!widgetID){
