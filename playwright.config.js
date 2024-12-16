@@ -20,7 +20,7 @@ module.exports = defineConfig({
     ['html'],
     //['allure-playwright'],
   ],
-
+// new changes added.
   projects: [
     { name: 'firefox', // Name of the project
       use: {
