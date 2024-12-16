@@ -1,6 +1,6 @@
 const { defineConfig } = require('@playwright/test');
 const commonSettings = {
-  headless: process.env.CI ? true : false,
+  headless: process.env.CI ? true : true,
   trace: 'on',
   screenshot: 'only-on-failure',
   video: 'retain-on-failure',
@@ -20,17 +20,16 @@ module.exports = defineConfig({
     ['html'],
     //['allure-playwright'],
   ],
-// new changes added.
   projects: [
     { name: 'firefox', // Name of the project
       use: {
         ...commonSettings,
         browserName: 'firefox',
       },},
-    { name: 'chromium', // Name of the project
-      use: {
-        ...commonSettings,
-        browserName: 'chromium',
-      },},
+    // { name: 'chromium', // Name of the project
+    //   use: {
+    //     ...commonSettings,
+    //     browserName: 'chromium',
+    //   },},
   ],
 });
